@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Quiz from "./component/Quiz";
 import Home from "./component/Home";
+import axios from "axios";
 
 function App() {
 
@@ -13,14 +14,16 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://opentdb.com/api.php?amount=15');
-        if (!response.ok) {
+        const { data } = await axios.get(
+          `https://opentdb.com/api.php?amount=15`
+        );
+        if (!data) {
           throw new Error('Network response was not ok');
         }
-        const jsonData = await response.json();
+       
 
-        setData(jsonData);
-        console.log(jsonData)
+        setData(data);
+        console.log(data)
         setLoading(false);
       } catch (error) {
         setError(error);

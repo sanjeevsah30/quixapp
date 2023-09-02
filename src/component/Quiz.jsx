@@ -11,7 +11,7 @@ const Quiz = ({ questions, isTimerRunning, setIsTimerRunning }) => {
   const [answer, setAnswer] = useState(null);
   const [result, setResult] = useState(resultInitialState);
   const [showResult, setShowResult] = useState(false);
-  const initialTime = 1; // 30 minutes in seconds
+  const initialTime = 1800; // 30 minutes in seconds
   const [timeLeft, setTimeLeft] = useState(initialTime);
   console.log(result);
   const onAnswerClick = (answer, index) => {
